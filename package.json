@@ -1,0 +1,47 @@
+{
+  "name": "image-compressor",
+  "productName": "Image Compressor",
+  "version": "1.0.0",
+  "description": "Unlimited local batch image compression & conversion. Pay once, own it forever — no subscription, no upload limits, no cloud.",
+  "main": "src/main.js",
+  "author": "Ben (bensblueprints)",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/smoke.js",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.bensblueprints.imagecompressor",
+    "productName": "Image Compressor",
+    "files": [
+      "src/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "**/node_modules/sharp/**/*",
+      "**/node_modules/@img/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

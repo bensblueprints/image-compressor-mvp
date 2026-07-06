@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:" />
+  <title>Image Compressor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⨂</div>
+      <div>
+        <h1>Image Compressor</h1>
+        <p class="tagline">Unlimited local compression · pay once, own it forever</p>
+      </div>
+    </div>
+    <div class="totals" id="totals" hidden>
+      <div class="total-block">
+        <span class="total-label">Before</span>
+        <span class="total-value" id="totalBefore">0 KB</span>
+      </div>
+      <div class="total-arrow">→</div>
+      <div class="total-block">
+        <span class="total-label">After</span>
+        <span class="total-value" id="totalAfter">0 KB</span>
+      </div>
+      <div class="total-block saved">
+        <span class="total-label">Saved</span>
+        <span class="total-value accent" id="totalSaved">0%</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside class="controls">
+      <section class="control-group">
+        <div class="control-header">
+          <label for="quality">Quality</label>
+          <span class="control-value" id="qualityValue">75</span>
+        </div>
+        <input type="range" id="quality" min="1" max="100" value="75" />
+      </section>
+
+      <section class="control-group">
+        <label class="control-title" for="format">Output format</label>
+        <select id="format">
+          <option value="original">Keep original</option>
+          <option value="jpeg">JPG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WebP</option>
+          <option value="avif">AVIF</option>
+        </select>
+      </section>
+
+      <section class="control-group">
+        <label class="control-title" for="maxDimension">Max dimension <span class="hint">(px, longest edge — 0 = off)</span></label>
+        <input type="number" id="maxDimension" min="0" step="1" value="0" placeholder="0 = original size" />
+      </section>
+
+      <section class="control-group">
+        <span class="control-title">Output location</span>
+        <label class="radio">
+          <input type="radio" name="outputMode" value="suffix" checked />
+          <span>Alongside originals <code>_compressed</code></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="outputMode" value="folder" />
+          <span>Custom folder</span>
+        </label>
+        <div class="folder-row" id="folderRow" hidden>
+          <button class="btn secondary" id="pickFolder">Choose…</button>
+          <span class="folder-path" id="folderPath" title="">No folder selected</span>
+        </div>
+      </section>
+
+      <button class="btn primary" id="compressBtn" disabled>Compress 0 images</button>
+      <button class="btn ghost" id="clearBtn" hidden>Clear list</button>
+    </aside>
+
+    <section class="workspace">
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone-inner">
+          <div class="dropzone-icon">🖼️</div>
+          <h2>Drop images here</h2>
+          <p>JPG · PNG · WebP · AVIF · TIFF — batch away, there are no limits</p>
+          <button class="btn secondary" id="browseBtn">Browse files</button>
+        </div>
+      </div>
+
+      <ul class="file-list" id="fileList"></ul>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
