@@ -25,7 +25,7 @@ Stop uploading your images to random websites 20 at a time. Image Compressor run
 
 The source is free (MIT) and always will be. If you'd rather skip Node/npm and get a signed Windows installer with automatic updates:
 
-**→ [Get the installer on Whop — $19, one time](https://whop.com/onetime-suite)**
+**→ [Get the installer on Whop — $19, one time](https://whop.com/benjisaiempire/shrinkray)**
 
 ## Quick start
 
